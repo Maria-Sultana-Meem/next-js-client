@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ProductHub - Next.js & Express.js E-Commerce App
 
-## Getting Started
+## Project Description
+ProductHub is a simple e-commerce web application built using **Next.js (App Router)** for the frontend and **Express.js** for the backend. It features public and protected pages with Firebase authentication (Email & Google Login). Users can browse products, view product details, and, if logged in, add or manage products.  
 
-First, run the development server:
+The app focuses on:
+- Polished UI & responsive layout  
+- Clear component structure (Hero/Banner, Features, Testimonials, Product Cards)  
+- Integration between frontend and backend APIs  
+- Protected pages with authentication  
 
+---
+
+## Setup & Installation
+
+### Backend
+1. Open a terminal and navigate to the `backend` folder.  
+2. Install dependencies:
 ```bash
+npm install
+Start the server:
+
+bash
+Copy code
+node index.js
+Backend will run at http://localhost:5000.
+Available routes:
+
+GET /products → all products
+
+GET /products/:id → product details by ID
+
+DELETE /products/:id → delete product (protected action in frontend)
+
+Frontend
+Open another terminal and navigate to the frontend folder.
+
+Install dependencies:
+
+bash
+Copy code
+npm install
+Start the development server:
+
+bash
+Copy code
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open browser at http://localhost:3000.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Routes Summary
+Public Routes
+Route	Description
+/	Homepage (Hero Banner, Features, Testimonials, Featured Products)
+/products	Product list with search & category filter (UI)
+/products/[id]	Product details page with image, description, price, priority, back button
+/login	Login page (Firebase Authentication)
+/register	Registration page (Firebase Authentication)
+Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Homepage Sections:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Navbar – logo, routes (Home, Products), login/register, sticky & responsive
 
-## Learn More
+Hero / Banner – headline, subtitle, CTA
 
-To learn more about Next.js, take a look at the following resources:
+Features – multiple cards with title, description, extra info
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Testimonials – customer reviews
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Product Grid – featured products (6 cards max)
 
-## Deploy on Vercel
+Footer – links, social icons
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Product Pages:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+List all products with search & filter
+
+Product details page: large image, full description, meta info, back button
+
+Authentication:
+
+Firebase Auth (Email & Google Login)
+
+Navbar dynamically shows user info when logged in
+
+Protected pages redirect to login if user is not authenticated
+
+Product Management (Protected):
+
+Add Product form with live confirmation message
+
+Manage Products table with View & Delete actions
+
+Technologies Used
+
+Frontend: Next.js (App Router), React, TailwindCSS, DaisyUI
+
+Backend: Node.js, Express.js
+
+Authentication: Firebase (Email & Google)
+
+Data Storage: JSON file (for demo)
+
+Notes
