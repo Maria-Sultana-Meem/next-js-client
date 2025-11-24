@@ -26,7 +26,7 @@ export default function ProductDetails() {
   // Fetch product data
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/products/${id}`)
+      fetch(`https://product-hub-two.vercel.app/products/${id}`)
         .then(res => res.json())
         .then(data => setProduct(data))
         .catch(err => console.log("Fetch error:", err));

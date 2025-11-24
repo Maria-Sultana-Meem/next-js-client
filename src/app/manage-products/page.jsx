@@ -24,7 +24,7 @@ export default function ManageProducts() {
   
   const fetchProducts = async () => {
     try {
-      const res = await fetch("http://localhost:5000/products");
+      const res = await fetch("https://product-hub-two.vercel.app/products");
       const data = await res.json();
       setProducts(data);
     } catch (err) {
@@ -41,7 +41,7 @@ export default function ManageProducts() {
     if (!confirm("Are you sure you want to delete this product?")) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/products/${id}`, {
+      const res = await fetch(`https://product-hub-two.vercel.app/products/${id}`, {
         method: "DELETE",
       });
 

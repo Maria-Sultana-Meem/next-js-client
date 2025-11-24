@@ -39,7 +39,7 @@ export default function AddProduct() {
   e.preventDefault();
 
   try {
-    const res = await fetch("http://localhost:5000/products", {
+    const res = await fetch("https://product-hub-two.vercel.app/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -58,12 +58,15 @@ export default function AddProduct() {
       image: "",
     });
 
-    setTimeout(() => setSuccess(false), 3000); // hide message after 3 sec
-  } catch (err) {
+    setTimeout(() => setSuccess(false), 3000); 
     console.error(err);
     alert("Error adding product!");
   }
-};
+  catch (err) {
+    console.error(err);
+    setError(err.message);
+  }
+ }
 
   if (!user) return null;
 

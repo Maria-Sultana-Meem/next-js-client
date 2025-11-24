@@ -7,7 +7,7 @@ export default function Products() {
     const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://product-hub-two.vercel.app/products")
       .then(res => res.json())
       .then(data => setProducts(data.slice(0, 6)))
       .catch(err => console.log("Fetch error:", err));

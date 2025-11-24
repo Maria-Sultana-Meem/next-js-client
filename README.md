@@ -23,7 +23,7 @@ Start the server:
 bash
 Copy code
 node index.js
-Backend will run at http://localhost:5000.
+Backend will run at https://product-hub-two.vercel.app.
 Available routes:
 
 GET /products → all products
