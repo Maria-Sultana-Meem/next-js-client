@@ -25,109 +25,126 @@ export default function Navbar() {
   return (
     <div className="bg-base-100 shadow-sm sticky top-0 z-50">
       <div className="navbar w-10/12 mx-auto">
-        {/* Navbar Start */}
+
+      
         <div className="navbar-start">
-          {/* Mobile Dropdown */}
-          <div className="dropdown">
+         
+          <div className="lg:hidden">
             <button
-              tabIndex={0}
-              className="btn btn-ghost lg:hidden"
               onClick={() => setOpen(!open)}
+              className="btn btn-ghost"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
+              <svg xmlns="http://www.w3.org/2000/svg"
+                fill="none" viewBox="0 0 24 24"
+                strokeWidth="2" stroke="currentColor"
+                className="w-6 h-6">
+                <path strokeLinecap="round"
                   strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
+                  d="M4 6h16M4 12h16m-7 6h7" />
               </svg>
             </button>
-            {open && (
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
-              >
-                <li>
-                  <Link
-                    href="/"
-                    className={pathname === "/" ? "text-green-500" : "text-black"}
-                    onClick={() => setOpen(false)}
-                  >
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/products"
-                    className={pathname === "/products" ? "text-green-500" : "text-black"}
-                    onClick={() => setOpen(false)}
-                  >
-                    Products
-                  </Link>
-                </li>
-                {user && (
-                  <>
-                    <li>
-                      <Link href="/add-product">Add Product</Link>
-                    </li>
-                    <li>
-                      <Link href="/manage-products">Manage Products</Link>
-                    </li>
-                  </>
-                )}
-              </ul>
-            )}
           </div>
 
-          {/* Logo */}
+         
           <Link href="/" className="text-green-500 font-bold text-xl ml-2">
             ProductHub
           </Link>
         </div>
 
-        {/* Navbar Center - Desktop */}
+       
+        {open && (
+          <ul className="absolute mt-16 bg-base-100 w-full left-0 p-4 shadow-lg flex flex-col gap-3 lg:hidden">
+
+            <li>
+              <Link
+                href="/"
+                className={pathname === "/" ? "text-green-500 font-bold" : ""}
+                onClick={() => setOpen(false)}
+              >
+                Home
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/products"
+                className={pathname === "/products" ? "text-green-500 font-bold" : ""}
+                onClick={() => setOpen(false)}
+              >
+                Products
+              </Link>
+            </li>
+
+          
+            {user && (
+              <>
+                <li>
+                  <Link href="/add-product" onClick={() => setOpen(false)}>
+                    Add Product
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/manage-products" onClick={() => setOpen(false)}>
+                    Manage Products
+                  </Link>
+                </li>
+              </>
+            )}
+
+            {!user && (
+              <>
+                <li>
+                  <Link href="/login" onClick={() => setOpen(false)}>
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/register" onClick={() => setOpen(false)}>
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
+        )}
+
+     
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-5">
             <li>
-              <Link href="/" className={pathname === "/" ? "text-green-500" : "text-black"}>
+              <Link href="/" className={pathname === "/" ? "text-green-500" : ""}>
                 Home
               </Link>
             </li>
             <li>
-              <Link href="/products" className={pathname === "/products" ? "text-green-500" : "text-black"}>
+              <Link href="/products" className={pathname === "/products" ? "text-green-500" : ""}>
                 Products
               </Link>
             </li>
+
             {user && (
               <>
-                <li>
-                  <Link href="/add-product">Add Product</Link>
-                </li>
-                <li>
-                  <Link href="/manage-products">Manage Products</Link>
-                </li>
+                <li><Link href="/add-product">Add Product</Link></li>
+                <li><Link href="/manage-products">Manage Products</Link></li>
               </>
             )}
           </ul>
         </div>
 
-        {/* Navbar End */}
+      
         <div className="navbar-end gap-3">
           {user ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost">
-                <img src={user.photoURL} className="w-8 h-8 rounded-full" alt="User Photo" />
+                <img
+                  src={user.photoURL}
+                  alt="User"
+                  className="w-8 h-8 rounded-full"
+                />
               </label>
-              <ul tabIndex={0} className="dropdown-content z-10 menu p-3 shadow bg-base-100 rounded-box w-52">
+              <ul className="dropdown-content menu p-3 shadow bg-base-100 w-52 rounded-box">
                 <li className="font-semibold">{user.displayName}</li>
-                <li className="text-sm text-gray-600">{user.email}</li>
+                <li className="text-sm">{user.email}</li>
                 <li>
                   <button onClick={handleLogout} className="text-red-600">
                     Logout
@@ -137,10 +154,10 @@ export default function Navbar() {
             </div>
           ) : (
             <>
-              <Link href="/login" className="btn bg-green-500 text-white">
+              <Link className="btn bg-green-500 text-white" href="/login">
                 Login
               </Link>
-              <Link href="/register" className="btn bg-blue-500 text-white">
+              <Link className="btn bg-blue-500 text-white" href="/register">
                 Register
               </Link>
             </>
